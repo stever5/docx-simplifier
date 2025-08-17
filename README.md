@@ -210,14 +210,10 @@ docx-simplifier document.docx --debug
 
 - **Input**: .docx files (Office Open XML format)
 - **Output**: .docx files with simplified structure
-- **Compatibility**: Works with documents created by Microsoft Word, LibreOffice, Google Docs, etc.
 
 ## Limitations
 
 - Only processes .docx files (not .doc, .rtf, etc.)
-- Does not modify images, charts, or embedded objects
-- Some complex document structures may require manual review
-- Track changes and comments are removed at higher levels
 
 ## Version History
 
