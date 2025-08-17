@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docx-simplifier"
+version = "1.0.0"
+description = "Simplify DOCX file structure to make them easier to translate"
+authors = [{name = "docx-simplifier contributors"}]
+license = {text = "GPL-3.0"}
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "wxpython>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=4.0",
+    "black",
+    "flake8",
+]
+
+[project.scripts]
+docx-simplifier = "docx_simplifier.cli:main"
+docx-simplifier-gui = "docx_simplifier.gui:main"
+
+[project.urls]
+Homepage = "https://github.com/docx-simplifier/docx-simplifier"
+"Bug Reports" = "https://github.com/docx-simplifier/docx-simplifier/issues"
+"Source" = "https://github.com/docx-simplifier/docx-simplifier"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["docx_simplifier*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--cov=docx_simplifier --cov-report=html --cov-report=term-missing --cov-fail-under=45"
+
+[tool.coverage.run]
+branch = true
+source = ["docx_simplifier"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]
